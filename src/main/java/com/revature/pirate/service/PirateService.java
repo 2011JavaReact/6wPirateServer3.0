@@ -1,7 +1,6 @@
 package com.revature.pirate.service;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 import com.revature.pirate.dao.DatabasePirateDAO;
 import com.revature.pirate.dao.DatabaseRoleDAO;
@@ -33,7 +32,7 @@ public class PirateService {
 		this.roleDAO = roleDAO;
 	}
 	
-	public ArrayList<Pirate> getAllPirates() {
+	public List<Pirate> getAllPirates() {
 		// If you have additional you want to add later, you can easily do it by something like this
 		return pirateDAO.getAllPirates();
 	}

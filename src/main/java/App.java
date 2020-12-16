@@ -1,6 +1,12 @@
-import org.apache.log4j.Logger;
+import java.util.List;
 
+import org.hibernate.Session;
+
+import com.revature.pirate.dao.DatabasePirateDAO;
+import com.revature.pirate.dao.DatabaseRoleDAO;
+import com.revature.pirate.model.Pirate;
 import com.revature.pirate.servlet.HelloServlet;
+import com.revature.pirate.util.HibernateUtility;
 
 public class App extends HelloServlet{
 	public static void main(String[] args){
@@ -24,12 +30,44 @@ public class App extends HelloServlet{
 //		
 //		pirateLogic.showPirates(pirates);
 //		scanner.close();
-		Logger logger = Logger.getLogger(App.class);
-		logger.debug("Logger Works! (Log4j 1)");
-		
+//		Logger logger = Logger.getLogger(App.class);
+//		logger.debug("Logger Works! (Log4j 1)");
+		HibernateTest();
 	}
 	
-
+	
+	public static void HibernateTest() {
+		System.out.println(System.getenv());
+		
+		DatabaseRoleDAO rDAO = new DatabaseRoleDAO();
+		DatabasePirateDAO pDAO = new DatabasePirateDAO();
+		try (Session session = HibernateUtility.getSession()) {
+//			Transaction tx = session.beginTransaction();
+			
+//			Role role1 = new Role("Cook");
+//			
+//			int id = (int) session.save(role1);
+//			System.out.println(id);
+			
+			
+//			tx.commit();
+			
+//			Test of findRoleByName hibernate implementation
+//			Role role = rDAO.findRoleByName("bannana");
+//			System.out.println(role);
+			
+//			Test of pirateDAO getAllPirates() hibernate implementation
+			List<Pirate> pirates = pDAO.getAllPirates();
+			System.out.println(pirates);
+			
+			
+//			Test of PirateDAO insertPirate() hibernate implementation
+//			Role role = rDAO.findRoleByName("Cook");
+//			Pirate pirate = pDAO.insertPirate("Bach", role);
+//			System.out.println(pirate);	
+			
+		}
+	}
 
 
 	
