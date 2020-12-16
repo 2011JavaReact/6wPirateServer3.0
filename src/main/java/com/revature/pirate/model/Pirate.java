@@ -1,8 +1,28 @@
 package com.revature.pirate.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="pirate")
 public class Pirate{ //implements Serializeable
 	
+	@Id
+	@GeneratedValue(strategy =  GenerationType.IDENTITY)
+	@Column(name="pirate_id")
 	private int id;
+	
+	@Column(name="name")
 	private String name; //instance
+	
+	@ManyToOne
+	@JoinColumn(name="role_id")
 	private Role role;
 	
 	public Pirate() {
